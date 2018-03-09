@@ -1,0 +1,8 @@
+Instrukcja kompilacji znajduje sie w Makefile
+plik 127227_k.c zawiera kod odpowiadający za funkcje realizowane przez klienta
+plik 127227_s.c zawiera kod odpowiadajacy za funkcje realizowane przez serwer
+
+
+Anna Żurczak 
+127227
+Grupa I4

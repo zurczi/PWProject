@@ -1,0 +1,32 @@
+Komunikacja między komponentami projketu odbywa się przez kolejke komunikatów. 
+Klient przesyła do serweru żądanie.
+
+W projkecie używam trzech struktur: wiadomosc,osoba,grupa. Wiadomosc potrzebna jest i klientowi i serwerowi bo ją sobie przekazuja. Wiadomosc wie przez kogo ma być odczytana ponieważ jej typem jest pid klienta. Serwer używa osoby jako struktury do przechowywania danych klienta, a grupy do przechowywania danych na temat grup.
+
+Klient ma do wyboru 10 operacji:
+-logowania gdzie wysyła swoja nazwe i pid do serwera jak również tez informacje co chce wykonac pod zmienna coZrobic
+-wylogowywania które jest analogiczne do wylogowania
+-wyswietlanie zalogowanych uzytkownikow gdzie wysylamy tylko co chcemy zrobic
+-podglad listy zapisanych do danej grupy tematycznej gdzie dodatkowo uzupelniamy pole nazwaGrupy w wiadomosci
+-zapis do grupy podobnie jak wyzej
+-wypis z grupy tak samo 
+-podglad dostepnych grup podobnie jak wyswietlenie zalogowanych uzytkownikow
+-wysylanie wiadomosci do grupy - podajemy do jakiej grupy chcemy przekazac wiadomosci i tresc tej wiadomosci 
+-wyslij wiadomosc do uzytkownika- podajemy numer pid uzytkownika do ktotego chcemy wsylac po uruchomieniu klienta jest on wyswietlany na ekranie
+-odbior wiadomosci- klient odbiera tylko wiadomosci z typem rownym jego numerowi pid 
+
+Serwer analogicznie jak klient ma 10 operacji z tym że odczyt czyli nr 10 klienta jest w pętli while ponieważ serwer cały czas oczekuje wiadomości i jest  zaiweszony tak długo az jakies nie dostanie.Serwer odbiera wiadomosci z typem 1. 
+
+-logowanie- zmieniam wartosc pola w tabOsob.zalogowany gdzie tabOsob jest typu osoba, i przypisuje tabOsob.PID pid zalogowanego i wysylam informacje o tym do klienta 
+-wylogowanie podobnie jak wyzej z tym ze zeruje te wartosci 
+-wyswietlanie zalogowanych uzytkownikow - szukam po tabOsob osoby z zalogowany=1 i kopiuje do tablicy czarow ktora nastepnie kopiuje do wiadomosci uzywajac gotowych funkcji c
+-podglad listy zapisanych do danej grupy tematycznej - w tabGrup szukam nazwy grupy podanej przez klienta, i po osobach nalezacych(tabGrup.ktoNalezy) szukam uzupelnionych pol numeramiPID i kopiuje podobnie jak w poprzednim myślniku
+-zapisanie do grupy-szukam w tabGrup nazwy podanej przez klienta nastepnie szukam wolnego miejsca w grupue i przypisuje PID klienta do wolnego pola tabGrup.ktoNalezy
+-wypisz z grupy -podobnie jak wyzej tylko ze zeruje pole tabgrup.ktoNalezy z numerem PID klienta
+-podglad listy dostepnych grup -wysylam klientowi nazwy grup
+-wysylanie wiadomosci do grupy - najpierw szukam w tabGrup grupy z nazwa podana przez klienta, nastepnie sprawdzam ktore pola ktoNalezy sa zajete i wysylam do kazdego z uzytkownikow nalezacych do grupy wiadomosc
+-wysylanie wiadomosci do uzytkownika- odczytuje wartosc pol PIDUzytkownika z wiadomosciO(odebranej) i przekazuje wiadomosc dalej 
+
+
+
+
